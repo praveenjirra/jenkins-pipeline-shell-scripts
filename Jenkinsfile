@@ -26,6 +26,7 @@ node {
       }
 
    	stage 'Deploy'
+      input 'Do you approve deployment?'
       node{
    		sh './myDeployment.sh'
       }
