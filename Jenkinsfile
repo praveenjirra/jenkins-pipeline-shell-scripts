@@ -21,9 +21,12 @@ node {
    		sh './myTest.sh'
       }
 
-   	stage('Deploy'){
-         input 'Do you approve deployment?'
-         
+   	stage 'Deploy'
+
+      timeout(time:30, unit:'SECONDS') {  # MINUTES , SECONDS
+             input message:'Do you approve deployment?', submitter: 'it-ops'
+      }
+      {
    		sh './myDeployment.sh'
       }
 }
