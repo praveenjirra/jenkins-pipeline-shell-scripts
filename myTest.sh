@@ -1,0 +1,1 @@
+echo "You test your project using this script!"
