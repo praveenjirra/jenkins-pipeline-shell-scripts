@@ -18,15 +18,16 @@ node {
    }
 
    stage('Test'){
-      sh './myTest.sh'
+      sh './myTest.sh'  // Test can seperated to different tests  ex: Integration and Qualit , Functional , Load and security
    }
 
-   stage('Deploy'){
-       
+   stage('Aproval'){
       timeout(time:20, unit:'SECONDS') {  // DAYS , MINUTES
-        input 'Do you approve deployment?'
+           input 'Do you approve deployment?'
       }
-           
+   }
+
+   stage('Deploy'){     
       sh './myDeployment.sh'
    }
 }
