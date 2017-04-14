@@ -18,8 +18,15 @@ node {
    }
 
    stage('Test'){
-      sh './myTest.sh'  // Test can seperated to different tests  ex: Integration and Qualit , Functional , Load and security
-   }
+        parallel 'functional': {
+          sh './myTest.sh' 
+          sleep 30
+        }, 'performance': {
+           sh './myTest.sh'  // Test can seperated to different tests  ex: Integration and Qualit , Functional , Load and security
+           sleep 20
+        } 
+     }
+
 
    stage('Aproval'){
       timeout(time:20, unit:'SECONDS') {  // DAYS , MINUTES
