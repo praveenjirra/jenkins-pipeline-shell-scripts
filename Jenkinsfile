@@ -1,4 +1,3 @@
-#!groovy
 node {
 
    stage('Stage 1'){
